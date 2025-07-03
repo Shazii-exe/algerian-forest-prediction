@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 12px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            padding: 8px;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2d2d2d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Enter Data to Predict</h2>
+    <form action="/predictdata" method="POST">
+        <label>Temperature:</label>
+        <input type="text" name="Temperature">
+
+        <label>RH:</label>
+        <input type="text" name="RH">
+
+        <label>Wind Speed:</label>
+        <input type="text" name="Ws">
+
+        <label>Rain:</label>
+        <input type="text" name="Rain">
+
+        <label>FFMC:</label>
+        <input type="text" name="FFMC">
+
+        <label>DMC:</label>
+        <input type="text" name="DMC">
+
+        <label>ISI:</label>
+        <input type="text" name="ISI">
+
+        <label>Classes:</label>
+        <input type="text" name="Classes">
+
+        <label>Region:</label>
+        <input type="text" name="region">
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if results is not none %}
+        <div class="result">
+            Predicted Output: {{ results }}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
